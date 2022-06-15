@@ -2,6 +2,7 @@ import React from "react";
 import Greetings from "./Greetings";
 import Counter from "./Counter";
 import MyForm from "./MyForm";
+import ReducerSample from "./ReducerSample";
 
 const App: React.FC = () => {
   const onClick = (name: string) => {
@@ -15,6 +16,7 @@ const App: React.FC = () => {
       <Greetings name="React" onClick={onClick} />
       <Counter />
       <MyForm onSubmit={onSubmit} />
+      <ReducerSample />
     </>
   );
 };
