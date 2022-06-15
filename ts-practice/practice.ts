@@ -1,25 +1,29 @@
-type Person = {
-  name: string;
-  age?: number;
-};
+// 제너릭(Generics)
+// 객체 A와 객체 B를 합쳐주는 merge 함수
+// A와 B가 어떤 타입이 올 지 모르기 때문에 제너릭을 사용한다.
+function merge<A, B>(a: A, b: B): A & B {
+  return {
+    ...a,
+    ...b,
+  };
+}
 
-// & 는 Intersection 으로서 두 개 이상의 타입들을 합쳐줌
-type Developer = Person & {
-  skills: string[];
-};
+const merged = merge({ foo: 1 }, { bar: 1 });
 
-const person: Person = {
-  name: "김사람",
-};
+// any라는 타입을 쓸 수도 있지만 타입 유추가 모두 깨진거나 다름 없음
+// function merge(a: any, b: any): any {
+//   return {
+//     ...a,
+//     ...b
+//   };
+// }
 
-const expert: Developer = {
-  name: "김개발",
-  skills: ["javascript", "react"],
-};
+// const merged = merge({ foo: 1 }, { bar: 1 });
 
-type People = Person[]; // Person[] 를 People 이라는 타입으로 사용 할 수 있음
-const people: People = [person, expert];
+function wrap<T>(param: T) {
+  return {
+    param,
+  };
+}
 
-type Color = "red" | "orange" | "yellow";
-const color: Color = "red";
-const colors: Color[] = ["red", "orange"];
+const wrapped = wrap(10);
