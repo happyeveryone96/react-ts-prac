@@ -1,11 +1,26 @@
-type Items<T> = {
-  list: T[];
-};
+class Queue<T> {
+  list: T[] = [];
+  getLength() {
+    return this.list.length;
+  }
+  enqueue(item: T) {
+    this.list.push(item);
+  }
+  dequeue() {
+    return this.list.shift();
+  }
+}
 
-const items: Items<string> = {
-  list: ["a", "b", "c"],
-};
-
-const items2: Items<number> = {
-  list: [1, 2, 3],
-};
+const queue = new Queue<number>();
+queue.enqueue(0);
+queue.enqueue(1);
+queue.enqueue(2);
+queue.enqueue(3);
+queue.enqueue(4);
+console.log(queue.getLength());
+console.log(queue.dequeue());
+console.log(queue.dequeue());
+console.log(queue.dequeue());
+console.log(queue.dequeue());
+console.log(queue.dequeue());
+console.log(queue);
